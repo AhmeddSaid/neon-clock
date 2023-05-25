@@ -1,0 +1,183 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+}
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  overflow: hidden;
+  background-color: #2f363e;
+}
+.clock {
+  position: relative;
+  width: 280px;
+  height: 280px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  scale: 2;
+  box-shadow: inset 5px 5px 25px rgba(0, 0, 0, 0.25);
+  border-radius: 50%;
+}
+@media (max-width: 767px) {
+  .clock {
+    scale: 1.2;
+    position: absolute;
+    top: 200px;
+  }
+}
+@media (max-width: 360px) {
+  .clock {
+    scale: 1;
+  }
+}
+.clock::before {
+  content: "";
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  background-color: #2f363e;
+  z-index: 12;
+  border: 1px solid #fff;
+  border-radius: 50%;
+}
+#time {
+  position: relative;
+  width: 250px;
+  height: 250px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#time .circle {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#time .circle svg {
+  position: relative;
+  transform: rotate(270deg);
+}
+#time .circle:nth-child(1) svg {
+  width: 250px;
+  height: 250px;
+}
+#time .circle:nth-child(2) svg {
+  width: 210px;
+  height: 210px;
+}
+#time .circle:nth-child(3) svg {
+  width: 170px;
+  height: 170px;
+}
+#time .circle svg circle {
+  width: 100%;
+  height: 100%;
+  fill: transparent;
+  stroke-width: 5;
+  stroke: var(--clr);
+  transform: translate(5px, 5px);
+  opacity: 0.25;
+  /* transition: 300ms; */
+}
+#time .circle:nth-child(1) svg circle {
+  stroke-dasharray: 760;
+  stroke-dashoffset: 760;
+}
+#time .circle:nth-child(2) svg circle {
+  stroke-dasharray: 630;
+  stroke-dashoffset: 630;
+}
+#time .circle:nth-child(3) svg circle {
+  stroke-dasharray: 510;
+  stroke-dashoffset: 510;
+}
+#time .circle .dots {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  /* transition: 300ms; */
+  z-index: 10;
+}
+#time .circle .dots::before {
+  content: "";
+  position: absolute;
+  top: -3px;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background-color: var(--clr);
+  box-shadow: 0 0 20px var(--clr), 0 0 40px var(--clr), 0 0 60px var(--clr), 0 0 80px var(--clr);
+}
+#time .clock-hands {
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  z-index: 10;
+}
+#time .clock-hands i {
+  position: absolute;
+  width: 2px;
+  height: 50%;
+  background-color: var(--clr2);
+  opacity: 0.7;
+  border-radius: 6px;
+  transform-origin: bottom;
+  transform: scaleY(0.5);
+}
+#time .clock-hands.hand-2 {
+  width: 170px;
+  height: 170px;
+  z-index: 9;
+}
+#time .clock-hands.hand-2 i {
+  width: 3px;
+}
+#time .clock-hands.hand-3 {
+  width: 140px;
+  height: 140px;
+  z-index: 8;
+}
+#time .clock-hands.hand-3 i {
+  width: 4px;
+}
+#time .dial {
+  font-weight: bold;
+  position: absolute;
+  text-align: center;
+  inset: 55px;
+  color: #999;
+  font-family: consolas;
+  transform: rotate(calc(30deg * var(--i)));
+}
+#time .dial span {
+  font-size: 0.75em;
+  font-weight: 500;
+  display: inline-block;
+  transform: rotate(calc(-30deg * var(--i)));
+}
+footer {
+  position: absolute;
+  bottom: 20px;
+  font-family: "Oswald", sans-serif;
+  font-size: 18px;
+  color: #fff;
+  user-select: none;
+}
+footer a {
+  text-decoration: none;
+  color: #ff0052;
+}
